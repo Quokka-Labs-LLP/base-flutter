@@ -2,8 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-
-
 class RequestInterceptor extends Interceptor{
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) {
@@ -22,7 +20,6 @@ class RequestInterceptor extends Interceptor{
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     debugPrint("=== Dio Success Response ====>>>> ${response.data}");
     return super.onResponse(response, handler);
-
   }
 
 }

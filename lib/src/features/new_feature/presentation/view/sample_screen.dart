@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
 import '../../../../shared/constants/route_constants.dart';
+import '../../../../shared/utilities/utils.dart';
 
 class SampleScreen extends StatefulWidget {
   const SampleScreen({Key? key}) : super(key: key);

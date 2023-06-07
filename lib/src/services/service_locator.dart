@@ -2,7 +2,6 @@ import 'package:base_architecture/src/features/new_feature/data/repo_impl/sample
 import 'package:base_architecture/src/features/new_feature/domain/repo/sample_repo.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-
 import 'api_services/dio_client.dart';
 
 final serviceLocator = GetIt.instance;

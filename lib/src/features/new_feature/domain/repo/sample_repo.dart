@@ -3,5 +3,5 @@ import '../../data/model/sample_model.dart';
 
 // create an abstract class and declare the functions of that class.
 abstract class SampleRepo {
-  Future<SampleModel> sampleApiCall();
+  Future<SampleModel> sampleApiCall();/// You can also use Either for the return type.
 }

@@ -1,7 +1,6 @@
 import 'package:base_architecture/src/features/new_feature/data/model/sample_model.dart';
 import 'package:base_architecture/src/features/new_feature/domain/repo/sample_repo.dart';
 import 'package:base_architecture/src/shared/constants/api_constants.dart';
-import 'package:base_architecture/src/shared/utilities/callback_methods.dart';
 import 'package:dio/dio.dart';
 import '../../../../services/service_locator.dart';
 

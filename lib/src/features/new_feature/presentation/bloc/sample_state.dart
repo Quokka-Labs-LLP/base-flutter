@@ -10,12 +10,11 @@ class SampleState {
   });
 
   SampleState copyWith({
-  StateStatus? sampleApiCallStatus,
+    StateStatus? sampleApiCallStatus,
     SampleModel? sampleModel,
-  }){
-    return SampleState(
-        sampleApiCallStatus : sampleApiCallStatus ?? this.sampleApiCallStatus,
-      sampleModel : sampleModel ?? this.sampleModel,
-    );
-  }
+  }) =>
+      SampleState(
+        sampleApiCallStatus: sampleApiCallStatus ?? this.sampleApiCallStatus,
+        sampleModel: sampleModel ?? this.sampleModel,
+      );
 }

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:base_architecture/src/app/app.dart';
+import 'package:base_architecture/src/shared/utilities/debug_logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -12,13 +13,13 @@ void main() async {
 
   runZonedGuarded(
     () async {
-      debugPrint(dotenv.env['BaseUrl']);
+      printMessage(dotenv.env['BaseUrl'].toString());
       runApp(const App());
     },
     (error, stack) {
       /// MARK:- To trace crash if happen in overall app
-      debugPrint(error.toString());
-      debugPrint(stack.toString());
+      printError(error.toString());
+      printError(stack.toString());
     },
   );
 }
