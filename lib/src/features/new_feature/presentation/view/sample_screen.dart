@@ -1,7 +1,7 @@
+import 'package:base_architecture/src/app/locale/locales.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../shared/constants/route_constants.dart';
-import '../../../../shared/utilities/utils.dart';
 
 class SampleScreen extends StatefulWidget {
   const SampleScreen({Key? key}) : super(key: key);
@@ -11,16 +11,19 @@ class SampleScreen extends StatefulWidget {
 }
 
 class _SampleScreenState extends State<SampleScreen> {
+
   @override
   Widget build(BuildContext context) {
+    final local = AppLocalizations.of(context)!;
+
     return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              'Sample Screen',
-              style: TextStyle(
+            Text(
+              local.signIn ?? '',
+              style: const TextStyle(
                 fontWeight: FontWeight.w600,
                 fontSize: 25,
               ),
