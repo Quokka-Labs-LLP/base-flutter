@@ -1,5 +1,6 @@
 import 'package:base_architecture/src/features/new_feature/presentation/bloc/sample_bloc.dart';
 import 'package:base_architecture/src/shared/utilities/utils.dart';
+import 'package:base_architecture/src/shared/widgets/common_title_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../shared/utilities/event_status.dart';
@@ -26,17 +27,11 @@ class _SampleWidgetState extends State<SampleWidget> {
       child: Scaffold(
         body: BlocBuilder<SampleBloc, SampleState>(
           builder: (context, state) {
-            if (state.sampleApiCallStatus is StateLoaded) {
+            if (state.apiCallStatus is StateLoaded) {
               Utils.instance.showToast('Success');
               return ListView.builder(
                 itemBuilder: (context, index) {
-                  return Text(
-                    state.sampleModel?.data?[index].employeeName ?? '',
-                    style: const TextStyle(
-                      fontSize: 23,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  );
+                  return CommonTitleText(text: state.sampleModel?.data?[index].employeeName ?? '');
                 },
                 itemCount: state.sampleModel?.data?.length,
               );

@@ -15,8 +15,8 @@ class _AppState extends State<App> {
 
   @override
   void initState() {
-    service_locator.init();
     super.initState();
+    service_locator.init();
   }
 
   @override
@@ -27,6 +27,7 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
+    /// MARK: - Add Localization & Router configuration
     return MaterialApp.router(
       localizationsDelegates: const [
         AppLocalizationsDelegate(),

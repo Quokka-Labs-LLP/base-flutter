@@ -1,7 +1,9 @@
 import 'package:base_architecture/src/app/locale/locales.dart';
+import 'package:base_architecture/src/shared/widgets/common_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../shared/constants/route_constants.dart';
+import '../../../../shared/widgets/common_title_text.dart';
 
 class SampleScreen extends StatefulWidget {
   const SampleScreen({Key? key}) : super(key: key);
@@ -21,30 +23,26 @@ class _SampleScreenState extends State<SampleScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              local.signIn ?? '',
-              style: const TextStyle(
-                fontWeight: FontWeight.w600,
-                fontSize: 25,
-              ),
+            CommonTitleText(
+              text: local.signIn ?? '',
+              fontSize: 30,
+              fontWeight: FontWeight.w600,
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ElevatedButton(onPressed: () {
-                /// MARK: use this to make it rootView without passing any data.
-                // context.goNamed(RouteConst.dashboardScreen.substring(1));
-                /// MARK: use this to make it rootView with passing some data.
-                // context.goNamed(RouteConst.dashboardScreen.substring(1), extra: 'Login_Success');
-                /// MARK: use this to navigate with passing some data.
-                context.push(RouteConst.dashboardScreen, extra: 'Login_Success');
-              }, child: const Text(
-                'Login',
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 25,
-                ),
-              ),),
-            )
+              padding: const EdgeInsets.all(20.0),
+              child: CommonButton(
+                onTap: () {
+                  /// MARK: use this to make it rootView without passing any data.
+                  // context.goNamed(RouteConst.dashboardScreen.substring(1));
+                  /// MARK: use this to make it rootView with passing some data.
+                  // context.goNamed(RouteConst.dashboardScreen.substring(1), extra: 'Login_Success');
+                  /// MARK: use this to navigate with passing some data.
+                  context.push('/${RouteConst.dashboardScreen}', extra: 'Login_Success');
+                },
+                btnText: 'Click Me',
+                fontSize: 22,
+              ),
+            ),
           ],
         ),
       ),

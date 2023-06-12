@@ -27,6 +27,7 @@ dependencies:
   go_router: ^6.5.5
   lottie: ^2.3.2
   flutter_dotenv: ^5.0.2
+  flutter_native_splash: ^2.3.1
 
 dev_dependencies:
   flutter_test:
@@ -44,5 +45,12 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - assets/images/svg/
+    - assets/images/
     - .env
+
+flutter_native_splash:
+  color: "#575990"
+  image: assets/images/splash.png
+  branding: assets/images/branding.png
+  android_12:
+    image: assets/images/splash.png

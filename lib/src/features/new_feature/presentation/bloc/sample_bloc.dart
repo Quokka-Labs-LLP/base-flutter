@@ -11,10 +11,11 @@ class SampleBloc extends Bloc<SampleEvent, SampleState> {
   final SampleRepo _apiRepo = serviceLocator<SampleRepo>();
 
   SampleBloc() : super(SampleState()) {
-    on<SampleBlocEvent>((event, emit) async{
-      emit(state.copyWith(sampleApiCallStatus: StateLoading()));
+    on<SampleBlocEvent>((event, emit) async {
+      emit(state.copyWith(apiCallStatus: StateLoading()));
       SampleModel sampleModel = await _apiRepo.sampleApiCall();
-      emit(state.copyWith(sampleApiCallStatus: StateLoaded(successMessage: sampleModel.message ?? ''), sampleModel: sampleModel));
+      /// HERE will check api status code & return data
+      emit(state.copyWith(apiCallStatus: StateLoaded(successMessage: sampleModel.message ?? ''), sampleModel: sampleModel));
     });
   }
 }

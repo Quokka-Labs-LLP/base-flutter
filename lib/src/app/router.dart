@@ -9,7 +9,7 @@ import '../shared/widgets/page_not_found.dart';
 
 class NavigationManager {
   final GoRouter router = GoRouter(
-    initialLocation: RouteConst.signInScreen,
+    initialLocation: '/${RouteConst.signInScreen}',
     navigatorKey: navigatorKey,
     observers: [
       GoRouterObserver(),
@@ -18,15 +18,15 @@ class NavigationManager {
     errorBuilder: (context, state) => const PageNotFound(),
     routes: <RouteBase>[
       GoRoute(
-        path: RouteConst.signInScreen,
-        name: RouteConst.signInScreen.substring(1),
+        path: '/${RouteConst.signInScreen}',
+        name: RouteConst.signInScreen,
         builder: (BuildContext context, GoRouterState state) {
           return const SampleScreen();
         },
       ),
       GoRoute(
-        path: RouteConst.dashboardScreen,
-        name: RouteConst.dashboardScreen.substring(1),
+        path: '/${RouteConst.dashboardScreen}',
+        name: RouteConst.dashboardScreen,
         builder: (BuildContext context, GoRouterState state) {
           final msg = state.extra as String;
           printMessage(msg);

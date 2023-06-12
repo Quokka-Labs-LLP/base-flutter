@@ -7,7 +7,6 @@ import 'api_services/dio_client.dart';
 final serviceLocator = GetIt.instance;
 
 Future<void> init() async {
-  /// Dio Client
   serviceLocator.registerLazySingleton<Dio>(() => DioClient().provideDio());
   serviceLocator.registerLazySingleton<SampleRepo>(() => SampleRepoImpl());
 }

@@ -1,20 +1,19 @@
 part of 'sample_bloc.dart';
 
 class SampleState {
-  final StateStatus sampleApiCallStatus;
+  final StateStatus apiCallStatus;
   final SampleModel? sampleModel;
 
   SampleState({
-    this.sampleApiCallStatus = const StateNotLoaded(),
+    this.apiCallStatus = const StateNotLoaded(),
     this.sampleModel,
   });
 
   SampleState copyWith({
-    StateStatus? sampleApiCallStatus,
+    StateStatus? apiCallStatus,
     SampleModel? sampleModel,
-  }) =>
-      SampleState(
-        sampleApiCallStatus: sampleApiCallStatus ?? this.sampleApiCallStatus,
-        sampleModel: sampleModel ?? this.sampleModel,
-      );
+  }) => SampleState(
+    apiCallStatus: apiCallStatus ?? this.apiCallStatus,
+    sampleModel: sampleModel ?? this.sampleModel,
+  );
 }
