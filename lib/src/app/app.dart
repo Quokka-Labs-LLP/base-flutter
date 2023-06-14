@@ -19,9 +19,10 @@ class _AppState extends State<App> {
   @override
   void initState() {
     super.initState();
-    // Adding Internet checking listener
-    InternetChecker.startInternetChecking();
-    // Checking Internet status for the first time.
+    // Uncomment the below line if you want to listen internet status without any trigger
+    // InternetChecker.startInternetChecking();
+
+    // an event to return one-time internet status
     InternetCheckerBloc.bloc.add(CheckInternetConnection());
     service_locator.init();
   }

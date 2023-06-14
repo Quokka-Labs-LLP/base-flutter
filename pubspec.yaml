@@ -19,7 +19,6 @@ dependencies:
   shared_preferences: ^2.0.15
   fluttertoast: ^8.1.2
   flutter_svg: ^1.1.5
-  firebase_crashlytics: ^3.0.7
   lifecycle: ^0.6.0
   flutter_bloc: ^8.1.1
   get_it: ^7.2.0
@@ -29,7 +28,6 @@ dependencies:
   flutter_dotenv: ^5.0.2
   connectivity_plus: ^3.0.6
   flutter_native_splash: ^2.3.1
-  firebase_core: ^2.14.0
 
 dev_dependencies:
   flutter_test:

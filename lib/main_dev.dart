@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:base_architecture/src/app/app.dart';
 import 'package:base_architecture/src/shared/utilities/debug_logger.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -15,8 +14,7 @@ void main() async {
       /// MARK:- Load environment file
       await dotenv.load(fileName: '.env.dev');
       debugPrint(dotenv.env['BaseUrl']);
-      // await Firebase.initializeApp();
-      await addSplashScreenDelay(duration: const Duration(seconds: 2));
+      await manageSplashDelay(duration: const Duration(seconds: 2));
       runApp(const App());
     }, (error, stack) {
       /// MARK:- To trace crash if happen
@@ -33,7 +31,7 @@ WidgetsBinding initializeApp() {
   return binding;
 }
 
-Future addSplashScreenDelay({Duration duration = Duration.zero}) async {
+Future manageSplashDelay({Duration duration = Duration.zero}) async {
   if (duration.inMilliseconds > 0) {
     await Future.delayed(duration);
   }
