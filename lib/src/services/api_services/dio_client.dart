@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-
 import '../../shared/constants/api_constants.dart';
 import 'request_interceptor.dart';
 

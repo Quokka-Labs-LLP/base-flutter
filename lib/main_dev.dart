@@ -13,7 +13,7 @@ void main() async {
       initializeApp();
       SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
       /// MARK:- Load environment file
-      await dotenv.load(fileName: '.env');
+      await dotenv.load(fileName: '.env.dev');
       debugPrint(dotenv.env['BaseUrl']);
       // await Firebase.initializeApp();
       await addSplashScreenDelay(duration: const Duration(seconds: 2));
