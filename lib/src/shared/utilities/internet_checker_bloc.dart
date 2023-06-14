@@ -1,17 +1,16 @@
-import 'package:base_architecture/src/shared/utilities/internet_checker.dart';
+import 'package:base_architecture/src/shared/utilities/utils.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../app/router.dart';
 
 class InternetCheckerBloc extends Bloc<InternetCheckerEvent, InternetCheckerState> {
   static InternetCheckerBloc bloc = InternetCheckerBloc();
 
   InternetCheckerBloc() : super(InternetCheckerState()) {
-    on<EmitInternetStatus>((event, emit) => emit(state.copyWith(event.isConnected, event.internetType)));
+    on<ListenInternetConnectionEvent>((event, emit) => emit(state.copyWith(event.isConnected, event.internetType)));
 
-    on<CheckInternetConnection>((event, emit) async {
+    on<CheckInternetConnectionEvent>((event, emit) async {
       final connectivityResult = await (Connectivity().checkConnectivity());
       if (connectivityResult == ConnectivityResult.mobile) {
         emit(state.copyWith(true, InternetType.mobile));
@@ -26,26 +25,26 @@ class InternetCheckerBloc extends Bloc<InternetCheckerEvent, InternetCheckerStat
         emit(state.copyWith(true, InternetType.ethernet));
       } else if (connectivityResult == ConnectivityResult.none) {
         emit(state.copyWith(false, InternetType.none));
-        ScaffoldMessenger.of(NavigationManager.navigatorKey.currentContext!).showSnackBar(InternetChecker.snackBar);
+        ScaffoldMessenger.of(NavigationManager.navigatorKey.currentContext!).showSnackBar(Utils.instance.internetLostSnackBar);
       }
     });
   }
 }
 
 
-/// MARK: Internet Checker Events
+/// MARK: InternetChecker Events
 abstract class InternetCheckerEvent {}
 
-class EmitInternetStatus extends InternetCheckerEvent {
+class ListenInternetConnectionEvent extends InternetCheckerEvent {
   final bool isConnected;
   final InternetType internetType;
 
-  EmitInternetStatus({required this.isConnected, required this.internetType});
+  ListenInternetConnectionEvent({required this.isConnected, required this.internetType});
 }
 
-class CheckInternetConnection extends InternetCheckerEvent {}
+class CheckInternetConnectionEvent extends InternetCheckerEvent {}
 
-/// MARK: Internet Checker States
+/// MARK: InternetChecker States
 class InternetCheckerState{
   final bool isConnected;
   final InternetType internetType;

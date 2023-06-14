@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../constants/color_constants.dart';
+import '../widgets/common_title_text.dart';
+import 'internet_checker_bloc.dart';
 
 class Utils{
   static Utils instance = Utils();
@@ -18,4 +20,15 @@ class Utils{
         webShowClose: true
     );
   }
+
+  final internetLostSnackBar = SnackBar(
+    duration: const Duration(hours: 1),
+    content: const CommonTitleText(text: 'No Internet Connection', fontSize: 16, fontColor: Colors.white),
+    action: SnackBarAction(
+      label: 'Check Again',textColor: Colors.green,
+      onPressed: () {
+        InternetCheckerBloc.bloc.add(CheckInternetConnectionEvent());
+      },
+    ), padding: const EdgeInsets.all(5),
+  );
 }

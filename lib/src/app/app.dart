@@ -23,13 +23,14 @@ class _AppState extends State<App> {
     // InternetChecker.startInternetChecking();
 
     // an event to return one-time internet status
-    InternetCheckerBloc.bloc.add(CheckInternetConnection());
+    InternetCheckerBloc.bloc.add(CheckInternetConnectionEvent());
     service_locator.init();
   }
 
   @override
   void dispose() {
-    InternetChecker.stopInternetChecking();
+    // Uncomment the below line if you listing internet status
+    // InternetChecker.stopInternetChecking();
     service_locator.disposeServices();
     super.dispose();
   }

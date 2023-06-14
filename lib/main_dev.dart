@@ -13,7 +13,7 @@ void main() async {
       SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
       /// MARK:- Load environment file
       await dotenv.load(fileName: '.env.dev');
-      debugPrint(dotenv.env['BaseUrl']);
+      printMessage(dotenv.env['BaseUrl'].toString());
       await manageSplashDelay(duration: const Duration(seconds: 2));
       runApp(const App());
     }, (error, stack) {
