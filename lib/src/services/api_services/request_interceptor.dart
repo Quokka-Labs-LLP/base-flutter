@@ -2,16 +2,16 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class RequestInterceptor extends Interceptor{
+class RequestInterceptor extends Interceptor {
   @override
-  void onError(DioError err, ErrorInterceptorHandler handler) {
+  void onError(DioException err, ErrorInterceptorHandler handler) {
     debugPrint("=== Dio Error !!!! ====>>>> ${err.type}");
     return super.onError(err, handler);
   }
 
-
   @override
-  void onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
+  void onRequest(
+      RequestOptions options, RequestInterceptorHandler handler) async {
     debugPrint("=== Dio Request ====>>>> ${options.method} => ${options.uri}");
     return super.onRequest(options, handler);
   }
@@ -21,5 +21,4 @@ class RequestInterceptor extends Interceptor{
     debugPrint("=== Dio Success Response ====>>>> ${response.data}");
     return super.onResponse(response, handler);
   }
-
 }

@@ -6,17 +6,23 @@ import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
+import 'src/services/db_services/db_init.dart';
+
 void main() async {
   runZonedGuarded(
     () async {
       initializeApp();
-      SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+      await DatabaseService.init();
+      SystemChrome.setPreferredOrientations(
+          [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
       /// MARK:- Load environment file
       await dotenv.load(fileName: '.env');
       printMessage(dotenv.env['BaseUrl'].toString());
       await manageSplashDelay(duration: const Duration(seconds: 2));
       runApp(const App());
-    }, (error, stack) {
+    },
+    (error, stack) {
       /// MARK:- To trace crash if happen
       printError(error.toString());
       printError(stack.toString());
