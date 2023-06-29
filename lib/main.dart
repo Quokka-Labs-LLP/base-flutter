@@ -8,6 +8,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import 'src/services/db_services/db_init.dart';
 
+
 void main() async {
   runZonedGuarded(
     () async {
