@@ -7,7 +7,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import 'src/services/db_services/db_init.dart';
-
+import 'src/shared/utilities/custom_app_logger.dart';
 
 void main() async {
   runZonedGuarded(
@@ -27,6 +27,9 @@ void main() async {
       /// MARK:- To trace crash if happen
       printError(error.toString());
       printError(stack.toString());
+
+      /// MARK:- Send logs to api
+      CustomLogger.logError(error);
     },
   );
 }
