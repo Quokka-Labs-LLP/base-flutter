@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:base_architecture/src/app/app.dart';
+import 'package:base_architecture/src/shared/utilities/custom_app_logger.dart';
 import 'package:base_architecture/src/shared/utilities/debug_logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,13 +11,17 @@ void main() async {
   runZonedGuarded(
     () async {
       initializeApp();
-      SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+      await CustomLogger.initialize();
+      SystemChrome.setPreferredOrientations(
+          [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
       /// MARK:- Load environment file
       await dotenv.load(fileName: '.env.dev');
       printMessage(dotenv.env['BaseUrl'].toString());
       await manageSplashDelay(duration: const Duration(seconds: 2));
       runApp(const App());
-    }, (error, stack) {
+    },
+    (error, stack) {
       /// MARK:- To trace crash if happen
       printError(error.toString());
       printError(stack.toString());

@@ -13,6 +13,7 @@ void main() async {
   runZonedGuarded(
     () async {
       initializeApp();
+      await CustomLogger.initialize();
       await DatabaseService.init();
       SystemChrome.setPreferredOrientations(
           [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
