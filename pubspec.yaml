@@ -32,6 +32,7 @@ dependencies:
   hive_flutter: ^1.1.0
   hive_generator: ^2.0.0
   path_provider: ^2.0.15
+  flutter_email_sender: ^6.0.1
 
 dev_dependencies:
   flutter_test:

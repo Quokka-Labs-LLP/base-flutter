@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:base_architecture/src/services/api_services/dio_client.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:get_it/get_it.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -11,6 +12,10 @@ import '../models/model_export.dart';
 
 class CustomLogger {
   CustomLogger._internal();
+
+  /// TODO :: Set reciever mail address
+  static String recieverMail = '';
+  static String subject = 'Testing Logs';
 
   // initialize logger
   static Future<void> initialize() async {
@@ -126,4 +131,27 @@ class CustomLogger {
           errorTimestamp: timeStamp,
         ),
       );
+
+  static Future<bool> sendEmailWithAttachment(String body) async {
+    final File file = await jsonFile;
+
+    final Email emailObject = Email(
+      body: body,
+      subject: subject,
+      recipients: [recieverMail],
+      isHTML: false,
+      attachmentPaths: [
+        file.path
+      ], // Provide the path of the file as an attachment
+    );
+
+    try {
+      await FlutterEmailSender.send(emailObject);
+      log('Email sent successfully');
+      return true;
+    } catch (e) {
+      log('Error sending email: $e');
+      return false;
+    }
+  }
 }

@@ -14,7 +14,18 @@ class _LoggerScreenState extends State<LoggerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () async => await CustomLogger.sendEmailWithAttachment(
+              'PFA logs with the mail',
+            ),
+            icon: const Icon(
+              Icons.share,
+            ),
+          )
+        ],
+      ),
       body: Center(
         child: FutureBuilder(
           future: CustomLogger.fetchLogs(),
