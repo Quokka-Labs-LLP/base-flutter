@@ -1,7 +1,9 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart' show SynchronousFuture;
-import 'dart:async';
+import 'package:flutter/material.dart';
+
 import 'languages/arabic.dart';
 import 'languages/english.dart';
 import 'languages/french.dart';
@@ -17,7 +19,7 @@ class AppLocalizations {
   final Locale locale;
   AppLocalizations(this.locale);
 
-  static AppLocalizations? of(BuildContext context) {
+  static AppLocalizations? of(final BuildContext context) {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
@@ -28,8 +30,8 @@ class AppLocalizations {
   };
 
   static List<Locale> getSupportedLocales() {
-    List<Locale> toReturn = [];
-    for (String langCode in languagesSupported.keys) {
+   final List<Locale> toReturn = [];
+    for ( final String langCode in languagesSupported.keys) {
       toReturn.add(Locale(langCode));
     }
     return toReturn;
@@ -62,17 +64,17 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   const AppLocalizationsDelegate();
 
   @override
-  bool isSupported(Locale locale) => [
+  bool isSupported(final Locale locale) => [
         'en',
         'ar',
         'fr',
       ].contains(locale.languageCode);
 
   @override
-  Future<AppLocalizations> load(Locale locale) {
+  Future<AppLocalizations> load(final Locale locale) {
     return SynchronousFuture<AppLocalizations>(AppLocalizations(locale));
   }
 
   @override
-  bool shouldReload(AppLocalizationsDelegate old) => false;
+  bool shouldReload(final AppLocalizationsDelegate old) => false;
 }

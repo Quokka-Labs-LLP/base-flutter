@@ -1,6 +1,7 @@
-import 'package:base_architecture/src/services/db_services/tables/sample_table/modal/sample_db_model.dart';
-import 'package:base_architecture/src/services/db_services/tables/sample_table/operations/sample_db_operations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+
+import 'tables/sample_table/modal/sample_db_model.dart';
+import 'tables/sample_table/operations/sample_db_operations.dart';
 
 
 class DatabaseService {

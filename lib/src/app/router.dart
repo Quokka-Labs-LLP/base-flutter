@@ -1,10 +1,11 @@
-import 'package:base_architecture/src/features/new_feature/presentation/view/sample_screen.dart';
-import 'package:base_architecture/src/shared/constants/route_constants.dart';
-import 'package:base_architecture/src/shared/utilities/debug_logger.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lifecycle/lifecycle.dart';
+
+import '../features/new_feature/presentation/view/sample_screen.dart';
 import '../features/new_feature/presentation/widget/sample_widget.dart';
+import '../shared/constants/route_constants.dart';
+import '../shared/utilities/debug_logger.dart';
 import '../shared/widgets/page_not_found.dart';
 
 class NavigationManager {
@@ -15,21 +16,21 @@ class NavigationManager {
       GoRouterObserver(),
       defaultLifecycleObserver,
     ],
-    errorBuilder: (context, state) => const PageNotFound(),
+    errorBuilder: (final context, final state) => const PageNotFound(),
     routes: <RouteBase>[
       GoRoute(
         path: '/${RouteConst.signInScreen}',
         name: RouteConst.signInScreen,
-        builder: (BuildContext context, GoRouterState state) {
+        builder: (final BuildContext context, final GoRouterState state) {
           return const SampleScreen();
         },
       ),
       GoRoute(
         path: '/${RouteConst.dashboardScreen}',
         name: RouteConst.dashboardScreen,
-        builder: (BuildContext context, GoRouterState state) {
-          final msg = state.extra as String;
-          printMessage(msg);
+        builder: (final BuildContext context, final GoRouterState state) {
+          final msg = state.extra as String?;
+          printMessage(msg!);
           return const SampleWidget();
         },
       ),
@@ -41,22 +42,22 @@ class NavigationManager {
 /// MARK: - Observing Navigation Stack
 class GoRouterObserver extends NavigatorObserver {
   @override
-  void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {
+  void didPush(final Route<dynamic> route, final Route<dynamic>? previousRoute) {
     debugPrint('Pushed: ${route.settings.name}, with arguments: ${route.settings.arguments}');
   }
 
   @override
-  void didPop(Route<dynamic> route, Route<dynamic>? previousRoute) {
+  void didPop(final Route<dynamic> route, final Route<dynamic>? previousRoute) {
     debugPrint('Popped: ${route.settings.name}, with arguments: ${route.settings.arguments}');
   }
 
   @override
-  void didRemove(Route<dynamic> route, Route<dynamic>? previousRoute) {
+  void didRemove(final Route<dynamic> route, final Route<dynamic>? previousRoute) {
     debugPrint('Removed: ${route.settings.name}, with arguments: ${route.settings.arguments}');
   }
 
   @override
-  void didReplace({Route<dynamic>? newRoute, Route<dynamic>? oldRoute}) {
+  void didReplace({final Route<dynamic>? newRoute, final Route<dynamic>? oldRoute}) {
     debugPrint('Replaced: ${newRoute?.settings.name}, with arguments: ${newRoute?.settings.arguments}');
   }
 }

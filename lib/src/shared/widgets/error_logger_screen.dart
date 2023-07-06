@@ -12,12 +12,12 @@ class LoggerScreen extends StatefulWidget {
 
 class _LoggerScreenState extends State<LoggerScreen> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: () async => await CustomLogger.sendEmailWithAttachment(
+            onPressed: () async => CustomLogger.sendEmailWithAttachment(
               'PFA logs with the mail',
             ),
             icon: const Icon(
@@ -29,14 +29,14 @@ class _LoggerScreenState extends State<LoggerScreen> {
       body: Center(
         child: FutureBuilder(
           future: CustomLogger.fetchLogs(),
-          builder: (_, snapshot) {
+          builder: (final _, final snapshot) {
             if (snapshot.hasData &&
                 snapshot.data != null &&
                 snapshot.data!.errorData != null &&
                 snapshot.data!.errorData!.isNotEmpty) {
-              List<ErrorData> errorData = snapshot.data!.errorData!;
+              final List<ErrorData> errorData = snapshot.data!.errorData!;
               return ListView.builder(
-                itemBuilder: (_, index) => ListTile(
+                itemBuilder: (final _, final index) => ListTile(
                   title: Text(errorData[index].errorDescription ?? ""),
                   subtitle: Text(errorData[index].errorTimestamp ?? ""),
                 ),

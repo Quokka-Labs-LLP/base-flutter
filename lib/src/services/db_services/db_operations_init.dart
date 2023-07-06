@@ -3,12 +3,12 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 abstract class Database {
   Box get box;
-  T get<T>(String id);
+  T get<T>(final String id);
   List<T> getAll<T>();
-  Future<void> delete(int id);
-  Future<void> deleteAll(List<String> keys);
-  Future<void> addUpdate<T>(String id, T item);
-  Future<void> add<T>(T item);
+  Future<void> delete(final int id);
+  Future<void> deleteAll(final List<String> keys);
+  Future<void> addUpdate<T>(final String id, final T item);
+  Future<void> add<T>(final T item);
 }
 
 // Sample extention

@@ -11,7 +11,7 @@ class SampleOperations extends Database {
   Box get box => _box;
 
   @override
-  T get<T>(String id) {
+  T get<T>(final String id) {
     try {
       final data = box.get(id);
 
@@ -20,7 +20,7 @@ class SampleOperations extends Database {
       }
 
       return data;
-    } catch (_) {
+    } on Exception  catch (_) {
       rethrow;
     }
   }
@@ -35,43 +35,43 @@ class SampleOperations extends Database {
       }
 
       return data.toList().cast<T>();
-    } catch (_) {
+    } on Exception  catch (_) {
       rethrow;
     }
   }
 
   @override
-  Future<void> delete(int id) async {
+  Future<void> delete(final int id) async {
     try {
       await box.delete(id);
-    } catch (_) {
+    } on Exception  catch (_) {
       rethrow;
     }
   }
 
   @override
-  Future<void> addUpdate<T>(String id, T item) async {
+  Future<void> addUpdate<T>(final String id, final T item) async {
     try {
       await box.put(id, item);
-    } catch (_) {
+    }  on Exception catch (_) {
       rethrow;
     }
   }
 
   @override
-  Future<void> deleteAll(List<String> keys) async {
+  Future<void> deleteAll(final List<String> keys) async {
     try {
       await box.deleteAll(keys);
-    } catch (_) {
+    }  on Exception catch (_) {
       rethrow;
     }
   }
   
   @override
-  Future<void> add<T>(T item) async{
+  Future<void> add<T>(final T item) async{
     try {
       await box.add(item);
-    } catch (_) {
+    } on Exception catch (_) {
       rethrow;
     }
   }

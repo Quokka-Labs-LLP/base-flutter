@@ -4,11 +4,11 @@ class ErrorLogModel {
 
   ErrorLogModel({this.createdAt, this.errorData});
 
-  ErrorLogModel.fromJson(Map<String, dynamic> json) {
+  ErrorLogModel.fromJson(final Map<String, dynamic> json) {
     createdAt = json['created_at'];
     if (json['error_data'] != null) {
       errorData = <ErrorData>[];
-      json['error_data'].forEach((v) {
+      json['error_data'].forEach((final v) {
         errorData!.add(ErrorData.fromJson(v));
       });
     }
@@ -18,7 +18,7 @@ class ErrorLogModel {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['created_at'] = createdAt;
     if (errorData != null) {
-      data['error_data'] = errorData!.map((v) => v.toJson()).toList();
+      data['error_data'] = errorData!.map((final v) => v.toJson()).toList();
     }
     return data;
   }
@@ -30,7 +30,7 @@ class ErrorData {
 
   ErrorData({this.errorDescription, this.errorTimestamp});
 
-  ErrorData.fromJson(Map<String, dynamic> json) {
+  ErrorData.fromJson(final Map<String, dynamic> json) {
     errorDescription = json['error_description'];
     errorTimestamp = json['error_timestamp'];
   }

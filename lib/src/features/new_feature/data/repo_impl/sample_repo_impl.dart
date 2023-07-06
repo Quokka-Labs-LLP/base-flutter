@@ -1,8 +1,9 @@
-import 'package:base_architecture/src/features/new_feature/data/model/sample_model.dart';
-import 'package:base_architecture/src/features/new_feature/domain/repo/sample_repo.dart';
-import 'package:base_architecture/src/shared/constants/api_constants.dart';
 import 'package:dio/dio.dart';
+
 import '../../../../services/service_locator.dart';
+import '../../../../shared/constants/api_constants.dart';
+import '../../domain/repo/sample_repo.dart';
+import '../model/sample_model.dart';
 
 class SampleRepoImpl extends SampleRepo {
   final Dio _dio = serviceLocator<Dio>();
