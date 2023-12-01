@@ -1,12 +1,13 @@
-import 'package:base_architecture/src/app/locale/locales.dart';
-import 'package:base_architecture/src/shared/widgets/common_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../../../app/locale/locales.dart';
 import '../../../../shared/constants/route_constants.dart';
+import '../../../../shared/widgets/common_button.dart';
 import '../../../../shared/widgets/common_title_text.dart';
 
 class SampleScreen extends StatefulWidget {
-  const SampleScreen({Key? key}) : super(key: key);
+  const SampleScreen({super.key});
 
   @override
   State<SampleScreen> createState() => _SampleScreenState();
@@ -15,7 +16,7 @@ class SampleScreen extends StatefulWidget {
 class _SampleScreenState extends State<SampleScreen> {
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     final local = AppLocalizations.of(context)!;
 
     return Scaffold(

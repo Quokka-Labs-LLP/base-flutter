@@ -11,16 +11,16 @@ class DioClient {
 
   Map<String, dynamic> headers = {
     'AuthorizationToken': '<use your auth token here>',
-    "Accept":"application/json",
+    "Accept": "application/json",
   };
 
   BaseOptions _dioOptions() {
-    BaseOptions opts = BaseOptions();
-    opts.baseUrl = baseUrl;
-    opts.headers = headers;
-    opts.connectTimeout = const Duration(minutes: 1);
-    opts.receiveTimeout = const Duration(minutes: 1);
-    opts.sendTimeout = const Duration(minutes: 1);
+    final BaseOptions opts = BaseOptions()
+      ..baseUrl = baseUrl
+      ..headers = headers
+      ..connectTimeout = const Duration(minutes: 1)
+      ..receiveTimeout = const Duration(minutes: 1)
+      ..sendTimeout = const Duration(minutes: 1);
     return opts;
   }
 

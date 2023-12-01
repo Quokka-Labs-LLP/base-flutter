@@ -1,14 +1,14 @@
-import 'package:base_architecture/src/app/router.dart';
-import 'package:base_architecture/src/shared/utilities/internet_checker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+
 import '../services/service_locator.dart' as service_locator;
 import '../shared/utilities/internet_checker_bloc.dart';
 import 'locale/locales.dart';
+import 'router.dart';
 
 class App extends StatefulWidget {
-  const App({Key? key}) : super(key: key);
+  const App({super.key});
 
   @override
   State<App> createState() => _AppState();
@@ -36,10 +36,10 @@ class _AppState extends State<App> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     /// MARK: - Add Localization & Router configuration
     return BlocProvider(
-      create: (context) => InternetCheckerBloc.bloc,
+      create: (final context) => InternetCheckerBloc.bloc,
       child: MaterialApp.router(
         localizationsDelegates: const [
           AppLocalizationsDelegate(),

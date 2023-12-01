@@ -10,8 +10,8 @@ class SampleState {
   });
 
   SampleState copyWith({
-    StateStatus? apiCallStatus,
-    SampleModel? sampleModel,
+    final StateStatus? apiCallStatus,
+    final SampleModel? sampleModel,
   }) => SampleState(
     apiCallStatus: apiCallStatus ?? this.apiCallStatus,
     sampleModel: sampleModel ?? this.sampleModel,
