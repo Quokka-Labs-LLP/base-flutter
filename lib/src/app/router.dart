@@ -1,3 +1,4 @@
+import 'package:chucker_flutter/chucker_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lifecycle/lifecycle.dart';
@@ -15,6 +16,7 @@ class NavigationManager {
     observers: [
       GoRouterObserver(),
       defaultLifecycleObserver,
+      ChuckerFlutter.navigatorObserver,
     ],
     errorBuilder: (final context, final state) => const PageNotFound(),
     routes: <RouteBase>[

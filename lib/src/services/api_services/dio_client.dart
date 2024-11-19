@@ -1,3 +1,4 @@
+import 'package:chucker_flutter/chucker_flutter.dart';
 import 'package:dio/dio.dart';
 import '../../shared/constants/api_constants.dart';
 import 'request_interceptor.dart';
@@ -6,6 +7,7 @@ class DioClient {
   final Dio _dio = Dio();
   final String baseUrl = ApiConst.baseUrl;
   final RequestInterceptor requestInterceptor = RequestInterceptor();
+  final ChuckerDioInterceptor chuckerDioInterceptor = ChuckerDioInterceptor();
 
   DioClient();
 
@@ -27,6 +29,7 @@ class DioClient {
   Dio provideDio() {
     _dio.options = _dioOptions();
     _dio.interceptors.add(requestInterceptor);
+    _dio.interceptors.add(chuckerDioInterceptor);
     return _dio;
   }
 }
