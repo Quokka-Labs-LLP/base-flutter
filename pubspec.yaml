@@ -1,0 +1,62 @@
+name: base_architecture
+description: A new Flutter project.
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.8.1 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  dio: ^5.1.2
+  shared_preferences: ^2.0.15
+  fluttertoast: ^8.1.2
+  flutter_svg: ^2.2.0
+  lifecycle: ^0.10.0
+  flutter_bloc: ^9.1.1
+  get_it: ^8.0.3
+  equatable: ^2.0.5
+  go_router: ^15.2.4
+  lottie: ^3.3.1
+  flutter_dotenv: ^5.0.2
+  connectivity_plus: ^6.1.4
+  flutter_native_splash: ^2.3.1
+  build_runner: ^2.4.5
+  hive_flutter: ^1.1.0
+  hive_generator: ^2.0.0
+  path_provider: ^2.0.15
+  flutter_email_sender: ^7.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - .env
+    - .env.dev
+
+flutter_native_splash:
+  color: "#575990"
+  image: assets/images/splash.png
+  branding: assets/images/branding.png
+  android_12:
+    image: assets/images/splash.png
