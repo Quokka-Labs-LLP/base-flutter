@@ -22,8 +22,11 @@ void main() async {
 
       /// MARK:- Load environment file
       await dotenv.load();
-      printMessage(dotenv.env['BaseUrl'].toString());
+      printMessage(dotenv.env['BASE_URL'].toString());
       await manageSplashDelay(duration: const Duration(seconds: 2));
+      printError("printError");
+      printWarning("printWarning");
+      printMessage("printMessage");
       runApp(const App());
     },
     (final error, final stack) {
