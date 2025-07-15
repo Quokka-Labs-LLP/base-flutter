@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:ql_logger_flutter/ql_logger_flutter.dart';
 
 import 'src/app/app.dart';
 import 'src/services/db_services/db_init.dart';
