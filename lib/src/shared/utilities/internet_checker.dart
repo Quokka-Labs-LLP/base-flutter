@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 
-import '../../app/router.dart';
+import '../../app/router/router.dart';
 import 'debug_logger.dart';
 import 'internet_checker_bloc.dart';
 import 'utils.dart';

@@ -1,14 +1,18 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lifecycle/lifecycle.dart';
-
-import '../features/new_feature/presentation/view/sample_screen.dart';
-import '../features/new_feature/presentation/widget/sample_widget.dart';
-import '../shared/constants/route_constants.dart';
-import '../shared/utilities/debug_logger.dart';
-import '../shared/widgets/page_not_found.dart';
+import '../../app/router/route_args.dart';
+import '../../features/new_feature/presentation/view/sample_screen.dart';
+import '../../features/new_feature/presentation/widget/sample_widget.dart';
+import '../../shared/constants/route_constants.dart';
+import '../../shared/utilities/debug_logger.dart';
+import '../../shared/widgets/page_not_found.dart';
 
 class NavigationManager {
+  static final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
+  GlobalKey<ScaffoldMessengerState>();
+
   final GoRouter router = GoRouter(
     initialLocation: '/${RouteConst.signInScreen}',
     navigatorKey: navigatorKey,
@@ -29,9 +33,9 @@ class NavigationManager {
         path: '/${RouteConst.dashboardScreen}',
         name: RouteConst.dashboardScreen,
         builder: (final BuildContext context, final GoRouterState state) {
-          final msg = state.extra as String?;
-          printMessage(msg!);
-          return const SampleWidget();
+          final sampleWidgetArgs = state.extra as SampleWidgetArgs?;
+          printMessage("msg! $sampleWidgetArgs");
+          return  SampleWidget(sampleWidgetArgs: sampleWidgetArgs,);
         },
       ),
     ],

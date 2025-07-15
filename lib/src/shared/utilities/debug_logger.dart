@@ -1,13 +1,34 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
+ import 'package:logger/logger.dart';
+import 'package:ql_logger_flutter/ql_logger_flutter.dart';
 
-void printMessage(final String text){
-  debugPrint('\x1B[34m$text\x1B[0m');
+ final logger = Logger();
+
+void printMessage(final String text, {bool recordLog = false}) {
+  if (recordLog) {
+    _recordLogs(text, logType: LogType.user);
+  }
+  if (kDebugMode) {
+     logger.d(text);
+  }
 }
 
 void printWarning(final String text) {
-  debugPrint('\x1B[33m$text\x1B[0m');
+  if (kDebugMode) {
+     logger.w(text);
+  }
 }
 
-void printError(final String text) {
-  debugPrint('\x1B[31m$text\x1B[0m');
+void printError(final String text, {bool recordLog = true}) async {
+  if (recordLog) {
+    _recordLogs(text, logType: LogType.error);
+  }
+  if (kDebugMode) {
+     logger.e(text);
+  }
 }
+
+void _recordLogs(String text, {LogType? logType}) async {
+  await ServerLogger.log(message: text, logType: logType);
+}
+

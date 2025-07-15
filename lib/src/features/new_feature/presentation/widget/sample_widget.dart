@@ -5,9 +5,11 @@ import '../../../../shared/utilities/event_status.dart';
 import '../../../../shared/utilities/utils.dart';
 import '../../../../shared/widgets/common_title_text.dart';
 import '../bloc/sample_bloc.dart';
+import '../../../../app/router/route_args.dart';
 
 class SampleWidget extends StatefulWidget {
-  const SampleWidget({super.key});
+  const SampleWidget({super.key,this.sampleWidgetArgs});
+  final SampleWidgetArgs? sampleWidgetArgs;
 
   @override
   State<SampleWidget> createState() => _SampleWidgetState();
