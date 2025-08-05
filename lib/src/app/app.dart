@@ -69,7 +69,7 @@ class _AppState extends State<App> {
 
               supportedLocales: AppLocalizations.getSupportedLocales(),
               debugShowCheckedModeBanner: false,
-              routerConfig: NavigationManager().router,
+              routerConfig: NavigationManager.router,
             ),
           );
         },

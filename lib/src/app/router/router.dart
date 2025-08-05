@@ -10,15 +10,17 @@ import '../../shared/utilities/debug_logger.dart';
 import '../../shared/widgets/page_not_found.dart';
 
 class NavigationManager {
+  static final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
   static final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
   GlobalKey<ScaffoldMessengerState>();
 
-  final GoRouter router = GoRouter(
+  static GoRouter router = GoRouter(
     initialLocation: '/${RouteConst.signInScreen}',
     navigatorKey: navigatorKey,
     observers: [
       GoRouterObserver(),
       defaultLifecycleObserver,
+      routeObserver
     ],
     errorBuilder: (final context, final state) => const PageNotFound(),
     routes: <RouteBase>[
